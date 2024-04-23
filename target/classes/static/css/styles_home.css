@@ -1,102 +1,81 @@
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+/* Загальні стилі */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Навігаційне меню */
-nav {
-    background-color: #4bae4f;
-    color: #c61e1e;
-    padding: 10px;
+/* Стилі для категорій книг */
+.categories {
+    padding: 50px 0;
 }
 
-nav ul {
-    list-style-type: none;
+.categories h2 {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+.category {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.category a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.category a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Стилі для розділу Акції */
+.promotions {
+
+    padding: 50px 0;
+}
+
+.promotions h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Стилі для анімованих банерів */
+.animated-banners {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+.animated-banners h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.banner-carousel {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Логотип */
-/* Логотип */
-.logo {
-    float: left; /* Розмістити логотип ліворуч */
-}
-
-.logo img {
-    width: 150px; /* Розмір вашого логотипу */
-}
-
-/* Поле пошуку */
-.search-bar {
-    float: right; /* Розмістити поле пошуку праворуч */
-    margin-top: 20px;
-}
-
-.search-bar input[type="text"] {
-    width: 300px;
-    padding: 10px;
-    border: 1px solid #ccc;
+/* Стилі для окремих банерів у банер-каруселі */
+.banner {
+    width: 30%; /* Змініть розміри за потребою */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-
-.search-bar button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.search-bar button:hover {
-    background-color: #45a049;
-}
-
-/* Кнопка кошика */
-.cart-button {
-    float: right; /* Розмістити кнопку кошика праворуч */
-    margin-top: 20px;
-    margin-right: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.cart-button:hover {
-    background-color: #45a049;
-}
-
-/* Іконка кошика */
-.cart-button .icon {
-    margin-right: 5px;
-}
-
-/* Показник кількості товарів */
-.cart-button .count {
-    font-weight: bold;
-}
-
-
-/* Банери або акційні пропозиції */
-.banners {
-    /* Стилі для банерів або акційних пропозицій */
-}
-
-.

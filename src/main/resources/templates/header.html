@@ -1,34 +1,30 @@
 <!-- Навігаційне меню -->
-<nav>
-    <ul>
-        <li><a href="#">Доставка</a></li>
-        <li><a href="#">Оплата</a></li>
-        <li><a href="#">Допомога</a></li>
-        <li><a href="#">Контакти</a></li>
-        <li><a href="#">Особистий кабінет</a></li>
+<div class="header-container">
+    <nav class="header-navigation">
+        <div class="header-logo">
+            <a href="/"><img th:src="@{/images/logo/logo.png}" alt="Логотип Магазину книг"></a>
+        </div>
 
-    </ul>
-</nav>
+        <ul class="header-nav-links">
+            <li><a href="#">Доставка</a></li>
+            <li><a href="#">Оплата</a></li>
+            <li><a href="#">Допомога</a></li>
+            <li><a href="#">Контакти</a></li>
+            <li><a href="#">Особистий кабінет</a></li>
+        </ul>
 
-<div class = "header-sa" >
-<!-- Логотип -->
-<div class="logo">
-    <a href="/"><img th:src="@{/images/logo/logo.png}" alt="Логотип Магазину книг"></a>
+        <!-- Поле пошуку, вихідне становище - приховане -->
+        <div class="header-search-bar" id="header-searchBar">
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Пошук за назвою, автором, жанром">
+                <button type="submit">Пошук</button>
+            </form>
+        </div>
+
+
+        <div class="header-cart-button" th:onclick="'/cart'">
+            <i class="fas fa-shopping-cart"></i> <!-- Іконка кошика з Font Awesome -->
+            <span class="header-count" th:text="${cartItemCount}">0</span> <!-- Показник кількості товарів -->
+        </div>
+    </nav>
 </div>
-
-<!-- Поле пошуку -->
-<div class="search-bar">
-    <form action="#" method="get">
-        <input type="text" name="search" placeholder="Пошук за назвою, автором, жанром">
-        <button type="submit">Пошук</button>
-    </form>
-</div>
-</div>
-<!-- Кнопка кошика -->
-<!-- Кнопка кошика -->
-<div class="cart-button" th:onclick="'/cart'">
-    <i class="fas fa-shopping-cart"></i> <!-- Іконка кошика з Font Awesome -->
-    <span class="count" th:text="${cartItemCount}">0</span> <!-- Показник кількості товарів -->
-</div>
-
-

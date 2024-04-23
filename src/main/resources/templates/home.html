@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин книг</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
     <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_home.css}" />
 </head>
 <body>
 <div th:insert="~{header.html}" ></div>
 
+<section class="categories">
+    <div class="container">
+        <h2>Категорії книг</h2>
+        <div class="category">
+            <a href="#">Категорія 1</a>
+        </div>
+        <div class="category">
+            <a href="#">Категорія 2</a>
+        </div>
+        <div class="category">
+            <a href="#">Категорія 3</a>
+        </div>
+        <div class="category">
+            <a href="#">Категорія 4</a>
+        </div>
+        <div class="category">
+            <a href="#">Категорія 5</a>
+        </div>
+    </div>
+</section>
+
+<section class="animated-banners">
+    <div class="container">
+        <h2>Банери з анімацією</h2>
+        <div class="banner-carousel">
+            <!-- Банери з анімацією, можливо з використанням CSS або JavaScript -->
+        </div>
+    </div>
+</section>
+
+<section class="promotions">
+    <div class="container">
+        <h2>Акції</h2>
+        <div class="promotion">
+            <!-- Зображення або текст про акції -->
+        </div>
+    </div>
+</section>
 
 
-<!-- Банери або акційні пропозиції -->
-<div class="banners">
-    <!-- Додайте банери або акційні пропозиції за потребою -->
-</div>
+
 </body>
 </html>

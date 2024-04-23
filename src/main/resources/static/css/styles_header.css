@@ -1,0 +1,120 @@
+.header-navigation {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+
+}
+
+.header-container {
+    max-width: 1600px;
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0; /* Remove any padding */
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.header-navigation .header-logo img {
+    width: 75px; /* Adjust logo size as needed */
+}
+
+.header-navigation .header-nav-links li {
+    margin-right: 20px;
+}
+
+.header-search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+
+.header-search-bar button{
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.header-search-bar button:hover {
+    background-color: #45a049;
+}
+
+.header-cart-button:hover {
+    background-color: #45a049;
+}
+
+.header-cart-button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-inside: auto;
+    margin-right: 20px;
+}
+
+.header-navigation ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.header-navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-navigation ul li a:hover {
+    color: #4CAF50; /* Змінюємо колір тексту при наведенні */
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Для екранів до 768px ширини (зазвичай мобільні пристрої) */
+@media (max-width: 768px) {
+    .header-navigation {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .header-navigation .header-logo,
+    .header-navigation .header-nav-links {
+        display: flex; /* Встановлюємо flexbox для логотипу та посилань */
+        justify-content: space-between; /* Розміщуємо елементи логотипу та посилань на краях */
+        margin-bottom: 10px; /* Додаємо відступ між логотипом і посиланнями */
+    }
+
+    .header-navigation .header-cart-button {
+        width: auto;
+        margin-top: 10px; /* Збільшуємо відступ між полем пошуку і кнопкою кошика */
+    }
+}
+
+/* Для екранів від 768px до 1110px */
+@media (min-width: 768px) and (max-width: 1110px) {
+    .header-navigation .header-search-bar input[type="text"] {
+        width: 100px; /* Зменшуємо ширину поля пошуку */
+    }
+
+    .header-search-bar button {
+        width: 121px;
+        margin-top: 5px;
+    }
+}
