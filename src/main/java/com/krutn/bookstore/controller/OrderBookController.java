@@ -12,27 +12,5 @@ import java.util.List;
 @RequestMapping("/api/order-books")
 public class OrderBookController {
 
-    @Autowired
-    private OrderBookService orderBookService;
 
-    @GetMapping
-    public List<OrderBook> getAllOrderBooks() {
-        return orderBookService.getAllOrderBooks();
-    }
-
-    @GetMapping("/{id}")
-    public OrderBook getOrderBookById(@PathVariable Long id) {
-        return orderBookService.getOrderBookById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("OrderBook", "id", id));
-    }
-
-    @PostMapping
-    public OrderBook createOrderBook(@RequestBody OrderBook orderBook) {
-        return orderBookService.saveOrderBook(orderBook);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteOrderBook(@PathVariable Long id) {
-        orderBookService.deleteOrderBook(id);
-    }
 }

@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.krutn</groupId>
-    <artifactId>BookStoreOLD</artifactId>
+    <artifactId>BookStore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>BookStore</name>
     <description>BookStore</description>

@@ -15,17 +15,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
-    public boolean checkPasswordByEmail(String email, String password) {
-        User user = userRepository.findByEmail(email);
-        if (user != null) {
-            return passwordEncoder.matches(password, user.getPassword());
-        }
-        return false;
-    }
-
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }

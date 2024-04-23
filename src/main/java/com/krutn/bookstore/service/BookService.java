@@ -38,23 +38,4 @@ public class BookService {
         return bookRepository.findAll(pageable);
     }
 
-
-
-
-    public List<Book> getFilteredBooks(Map<String, String> filters) {
-        // Отримуємо значення фільтрів
-        String author = filters.get("author");
-        String genre = filters.get("genre");
-        String minPrice = filters.get("minPrice");
-        String maxPrice = filters.get("maxPrice");
-
-        // Отримуємо відфільтрований список книг з бази даних
-        List<Book> filteredBooks = bookRepository.findByAuthorsInAndGenresInAndPriceBetween();
-
-        return filteredBooks;
-    }
-
-    public List<String> getAllAuthors() {
-        return bookRepository.findAllAuthors();
-    }
 }
