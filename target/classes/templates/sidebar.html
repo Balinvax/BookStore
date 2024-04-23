@@ -1,0 +1,98 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3>Меню</h3>
+    </div>
+
+    <form th:action="@{/books}" method="get">
+        <!-- Елементи фільтрації за авторами -->
+        <select name="authors" multiple>
+            <option th:each="author : ${authors}" th:value="${author}" th:text="${author}"></option>
+        </select>
+
+        <!-- Елементи фільтрації за жанрами -->
+        <select name="genres" multiple>
+            <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+        </select>
+
+        <input type="text" name="minPrice" placeholder="Мінімальна ціна"/>
+        <input type="text" name="maxPrice" placeholder="Максимальна ціна"/>
+
+        <button type="button" id="applyFilters">Застосувати фільтр</button>
+    </form>
+    </form>
+
+
+</div>
+
+<div class="content" id="mainContent">
+    <button id="sidebarToggle">Toggle Sidebar</button>
+    <i class="fa fa-bars"></i>
+</div>
+
+
+<style>
+    /* CSS стилі */
+    .sidebar {
+        float: left;
+        width: 250px;
+        height: 200vh;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-right: 1px solid #ddd;
+        transition: width 0.3s ease, padding 0.3s ease, border 0.3s ease;
+    }
+
+    .content {
+        margin-left: 270px; /* Ширина сайдбара + відступ */
+        padding: 20px;
+        background-color: #ffffff;
+        transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.hidden {
+        width: 0;
+        padding: 20px 0; /* Змінюємо padding на 0 */
+        border-right: none; /* Видаляємо border */
+        overflow: hidden;
+    }
+
+    #mainContent.expanded {
+        margin-left: 0;
+    }
+</style>
+
+<!-- Підключіть jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    // Додайте скрипт JavaScript для обробки події натискання кнопки "Застосувати фільтр"
+    $(document).ready(function() {
+        $("#applyFilters").click(function() {
+            var formData = $("#filterForm").serialize(); // Отримайте дані форми
+            $.ajax({
+                type: "GET",
+                url: "/books", // Адреса, куди відправляється запит
+                data: formData, // Дані, які відправляються на сервер
+                success: function(response) {
+                    $("#mainContent").html(response); // Оновіть вміст головного контенту
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    });
+
+    document.getElementById('sidebarToggle').addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar');
+        var mainContent = document.getElementById('mainContent');
+
+        if (!sidebar.classList.contains('hidden')) {
+            sidebar.classList.add('hidden');
+            mainContent.classList.add('expanded');
+        } else {
+            sidebar.classList.remove('hidden');
+            mainContent.classList.remove('expanded');
+        }
+    });
+</script>
