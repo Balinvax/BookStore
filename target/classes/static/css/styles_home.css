@@ -1,0 +1,102 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/* Навігаційне меню */
+nav {
+    background-color: #4bae4f;
+    color: #c61e1e;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Логотип */
+/* Логотип */
+.logo {
+    float: left; /* Розмістити логотип ліворуч */
+}
+
+.logo img {
+    width: 150px; /* Розмір вашого логотипу */
+}
+
+/* Поле пошуку */
+.search-bar {
+    float: right; /* Розмістити поле пошуку праворуч */
+    margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #45a049;
+}
+
+/* Кнопка кошика */
+.cart-button {
+    float: right; /* Розмістити кнопку кошика праворуч */
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart-button:hover {
+    background-color: #45a049;
+}
+
+/* Іконка кошика */
+.cart-button .icon {
+    margin-right: 5px;
+}
+
+/* Показник кількості товарів */
+.cart-button .count {
+    font-weight: bold;
+}
+
+
+/* Банери або акційні пропозиції */
+.banners {
+    /* Стилі для банерів або акційних пропозицій */
+}
+
+.
