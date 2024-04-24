@@ -19,9 +19,11 @@
     text-align: center;
     margin-bottom: 20px;
     margin-top: 30px;
+
 }
 
 .category a {
+    display: inline-block;
     text-decoration: none;
     color: #333;
     font-size: 18px;
@@ -29,6 +31,10 @@
     padding: 10px 20px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    margin-bottom: 10px; /* Додамо відступ між категоріями */
+    width: 200px; /* Фіксований розмір кнопок */
+    text-align: center; /* Вирівнюємо текст по центру */
+
 }
 
 .category a:hover {
@@ -36,12 +42,33 @@
     color: #fff;
 }
 
-/* Стилі для розділу Акції */
 
+.categories .container {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяємо елементам переноситись на новий рядок */
+    justify-content: space-between; /* Рівномірно розподіляємо рядки по контейнеру */
+}
 
-.promotions h2 {
-    text-align: center;
-    margin-bottom: 30px;
+.row {
+    display: flex; /* Встановлюємо flexbox для рядка */
+    width: 100%; /* Ширина рядка - 100% контейнера */
+    margin-bottom: 10px; /* Додаємо відступ між рядками */
+}
+
+.category {
+    width: 48%; /* Задаємо ширину кнопки (50% - враховує відступи) */
+    margin-right: 10px; /* Відступ між кнопками у рядку */
+}
+
+.category:last-child {
+    margin-right: 0; /* Відсутність відступу для останньої кнопки у рядку */
+}
+
+@media (max-width: 768px) {
+    .category {
+        width: 100%; /* На мобільних пристроях кнопки займатимуть всю ширину */
+        margin-right: 0; /* Відсутність відступу між кнопками на малих екранах */
+    }
 }
 
 
@@ -69,20 +96,15 @@
 .banner-carousel {
     position: relative;
     overflow: hidden;
-    /*height: 20vh;  Змінили висоту */
-
-    height: 0; /* Початково встановлюємо висоту 0 */
+    height: 0;
     padding-top: 60%;
 
 }
 
-/* Додаємо стилі для .banner-carousel, щоб контейнер можна було використовувати */
 .animated-banners {
     max-width: 1600px;
     margin: 0 auto;
     padding: 20px;
-
-
 }
 
 .banner-container {
@@ -90,19 +112,12 @@
     height: auto;
 }
 
-/*
-@media (max-width: 550px) {
-    .banner-carousel {
-        height: 20vh;
-    }
-
+/* Стилі для розділу Акції */
+.promotions h2 {
+    text-align: center;
 }
 
- Для екранів від 768px до 1110px
-@media (min-width: 551px) and (max-width: 768px) {
+.promotions {
+margin-bottom: 300px;
 
-    .banner-carousel {
-        height: 300px;
-    }
 }
-*/
