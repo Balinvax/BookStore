@@ -19,9 +19,11 @@
     text-align: center;
     margin-bottom: 20px;
     margin-top: 30px;
+
 }
 
 .category a {
+    display: inline-block;
     text-decoration: none;
     color: #333;
     font-size: 18px;
@@ -29,12 +31,47 @@
     padding: 10px 20px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    margin-bottom: 10px; /* Додамо відступ між категоріями */
+    width: 200px; /* Фіксований розмір кнопок */
+    text-align: center; /* Вирівнюємо текст по центру */
+
 }
 
 .category a:hover {
     background-color: #333;
     color: #fff;
 }
+
+
+.categories .container {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяємо елементам переноситись на новий рядок */
+    justify-content: space-between; /* Рівномірно розподіляємо рядки по контейнеру */
+}
+
+.row {
+    display: flex; /* Встановлюємо flexbox для рядка */
+    width: 100%; /* Ширина рядка - 100% контейнера */
+    margin-bottom: 10px; /* Додаємо відступ між рядками */
+}
+
+.category {
+    width: 48%; /* Задаємо ширину кнопки (50% - враховує відступи) */
+    margin-right: 10px; /* Відступ між кнопками у рядку */
+}
+
+.category:last-child {
+    margin-right: 0; /* Відсутність відступу для останньої кнопки у рядку */
+}
+
+@media (max-width: 768px) {
+    .category {
+        width: 100%; /* На мобільних пристроях кнопки займатимуть всю ширину */
+        margin-right: 0; /* Відсутність відступу між кнопками на малих екранах */
+    }
+}
+
+
 
 /* БАНЕРИ */
 .banner {
@@ -78,6 +115,9 @@
 /* Стилі для розділу Акції */
 .promotions h2 {
     text-align: center;
-    margin-bottom: 30px;
 }
 
+.promotions {
+margin-bottom: 300px;
+
+}
