@@ -36,46 +36,48 @@
     color: #fff;
 }
 
-/* Стилі для розділу Акції */
-.promotions {
-
-    padding: 50px 0;
+/* БАНЕРИ */
+.banner {
+    width: 100%;
+    height: auto; /* Змінили висоту */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
 }
 
+.banner img {
+    width: 100%;
+    max-height: 900px;
+}
+
+.banner:not(:first-child) {
+    transform: translateX(100%);
+}
+
+.banner-carousel {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-top: 60%;
+
+}
+
+.animated-banners {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.banner-container {
+    max-width: 1600px;
+    height: auto;
+}
+
+/* Стилі для розділу Акції */
 .promotions h2 {
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* Стилі для анімованих банерів */
-.animated-banners {
-    background-color: #f9f9f9;
-    padding: 50px 0;
-}
-
-.animated-banners h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.banner-carousel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Стилі для окремих банерів у банер-каруселі */
-.banner {
-    width: 30%; /* Змініть розміри за потребою */
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.banner:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}

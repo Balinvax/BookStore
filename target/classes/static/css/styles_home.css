@@ -37,45 +37,72 @@
 }
 
 /* Стилі для розділу Акції */
-.promotions {
 
-    padding: 50px 0;
-}
 
 .promotions h2 {
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* Стилі для анімованих банерів */
-.animated-banners {
-    background-color: #f9f9f9;
-    padding: 50px 0;
+
+
+/* БАНЕРИ */
+.banner {
+    width: 100%;
+    height: auto; /* Змінили висоту */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
 }
 
-.animated-banners h2 {
-    text-align: center;
-    margin-bottom: 30px;
+.banner img {
+    width: 100%;
+    max-height: 900px;
+}
+
+.banner:not(:first-child) {
+    transform: translateX(100%);
 }
 
 .banner-carousel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
+    overflow: hidden;
+    /*height: 20vh;  Змінили висоту */
+
+    height: 0; /* Початково встановлюємо висоту 0 */
+    padding-top: 60%;
+
 }
 
-/* Стилі для окремих банерів у банер-каруселі */
-.banner {
-    width: 30%; /* Змініть розміри за потребою */
+/* Додаємо стилі для .banner-carousel, щоб контейнер можна було використовувати */
+.animated-banners {
+    max-width: 1600px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+
+
 }
 
-.banner:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.banner-container {
+    max-width: 1600px;
+    height: auto;
 }
+
+/*
+@media (max-width: 550px) {
+    .banner-carousel {
+        height: 20vh;
+    }
+
+}
+
+ Для екранів від 768px до 1110px
+@media (min-width: 551px) and (max-width: 768px) {
+
+    .banner-carousel {
+        height: 300px;
+    }
+}
+*/
