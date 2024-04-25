@@ -12,9 +12,20 @@
     max-width: 1600px;
     margin: 0 auto; /* Center the container horizontally */
     padding: 0; /* Remove any padding */
+    z-index: 999999;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 50%; /* Центруємо по горизонталі */
+    transform: translateX(-50%); /* Зміщуємо назад на половину ширини */
+    width: 100%; /* Збільшуємо ширину до повної ширини екрану */
 }
 
 
+/* Add some top padding to the page content :fixed and top:0) */
 body, html {
     height: 100%;
     margin: 0;

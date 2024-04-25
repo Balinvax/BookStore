@@ -47,42 +47,24 @@
             </div>
         </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                const banners = document.querySelectorAll(".banner");
-                let currentIndex = 0;
-
-                function showBanner(index) {
-                    banners.forEach(function(banner, i) {
-                        if (i === index) {
-                            banner.style.transform = "translateX(0)";
-                        } else {
-                            banner.style.transform = "translateX(100%)";
-                        }
-                    });
-                }
-
-                function nextBanner() {
-                    currentIndex = (currentIndex + 1) % banners.length;
-                    showBanner(currentIndex);
-                }
-
-                setInterval(nextBanner, 3000);
-            });
-        </script>
-
     </div>
 </section>
+
 <section class="promotions">
     <div class="container">
         <h2>Акції</h2>
         <div class="promotion">
-            <!-- Зображення або текст про акції -->
+            <div th:each="sale : ${sales}">
+                <div class="sale-item">
+                    <h2 th:text="${sale.book.title}"></h2>
+                    <img th:src="@{'/images/bookCovers/' + ${sale.book.id} + '.png'}" alt="Обкладинка книги">
+                    <p th:text="'Ціна зі знижкою: ' + ${sale.book.price * (1 - sale.discount / 100)}"></p>
+                    <button>Додати в кошик</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
-
-
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

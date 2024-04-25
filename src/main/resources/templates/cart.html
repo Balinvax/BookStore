@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кошик</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_cart.css}" />
+</head>
+<body>
+
+<div th:insert="~{header.html}" ></div>
+
+
+<section class="cart">
+    <div class="container" id="cart-items">
+        <h2>Ваш кошик</h2>
+        <!-- Сюди будуть додаватися товари з localStorage -->
+    </div>
+    <div class="summary">
+        <h3>Загальна кількість товарів: <span id="total-quantity">0</span></h3>
+        <h3>Загальна сума: <span id="total-price">0</span> грн</h3>
+    </div>
+    <button id="checkout-btn">Оформити замовлення</button>
+</section>
+
+<script th:src="@{/js/cart.js}"></script>
+
+
+</body>
+</html>

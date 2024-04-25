@@ -1,5 +1,5 @@
 <!-- Навігаційне меню -->
-<div class="header-container">
+<div class="header-container" id="myHeader">
     <nav class="header-navigation">
         <div class="header-logo">
             <a href="/"><img th:src="@{/images/logo/logo.png}" alt="Логотип Магазину книг"></a>
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="header-cart-button" th:onclick="'/cart'">
+        <div class="header-cart-button" onclick="location.href='/cart'">
             <i class="fas fa-shopping-cart"></i> <!-- Іконка кошика з Font Awesome -->
             <span class="header-count" th:text="${cartItemCount}">0</span> <!-- Показник кількості товарів -->
         </div>
