@@ -76,6 +76,24 @@ body, html {
     cursor: pointer;
     margin-inside: auto;
     margin-right: 20px;
+    position: relative; /* Забезпечуємо відносне позиціонування для додавання інших елементів */
+    display: inline-block; /* Зробимо блок-кнопку величезним, якщо він не розтягується */
+
+}
+
+.cart-quantity {
+    position: absolute; /* Абсолютне позиціонування відносно батьківського елемента */
+    top: -10px; /* Зсуваємо вгору на 10px від верхнього краю */
+    right: -10px; /* Зсуваємо праворуч на 10px від правого краю */
+    background-color: red; /* Колір кружка */
+    color: white; /* Колір тексту */
+    border-radius: 50%; /* Округлені кути для створення круга */
+    width: 20px; /* Ширина круга */
+    height: 20px; /* Висота круга */
+    text-align: center; /* Вирівнюємо текст у центрі */
+    line-height: 20px; /* Вирівнюємо вертикально текст у центрі */
+    font-size: 12px; /* Розмір шрифту */
+    font-weight: bold; /* Жирний шрифт */
 }
 
 .header-navigation ul {
@@ -119,7 +137,7 @@ body, html {
 }
 
 /* Для екранів від 768px до 1110px */
-@media (min-width: 768px) and (max-width: 1110px) {
+@media (min-width: 768px) and (max-width: 1200px) {
     .header-navigation .header-search-bar input[type="text"] {
         width: 100px; /* Зменшуємо ширину поля пошуку */
     }
@@ -128,4 +146,6 @@ body, html {
         width: 121px;
         margin-top: 5px;
     }
+
+
 }

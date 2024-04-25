@@ -21,10 +21,12 @@
             </form>
         </div>
 
-
         <div class="header-cart-button" onclick="location.href='/cart'">
             <i class="fas fa-shopping-cart"></i> <!-- Іконка кошика з Font Awesome -->
-            <span class="header-count" th:text="${cartItemCount}">0</span> <!-- Показник кількості товарів -->
+            <!-- Червоний кружок з кількістю товарів у кошику -->
+            <div class="cart-quantity" id="cart-quantity">0</div>
         </div>
+
     </nav>
 </div>
+<script th:src="@{/js/script.js}"></script>

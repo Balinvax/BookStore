@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const totalQuantityElement = document.getElementById("total-quantity");
     const totalPriceElement = document.getElementById("total-price");
     const checkoutBtn = document.getElementById("checkout-btn");
+    const cartQuantityElement = document.getElementById("cart-quantity"); // Додано
     let cart = [];
 
     function loadCart() {
@@ -44,6 +45,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         totalQuantityElement.textContent = totalQuantity;
         totalPriceElement.textContent = totalPrice.toFixed(2);
+
+        // Оновлення індикатора кількості товарів у кошику (додано)
+        cartQuantityElement.textContent = totalQuantity;
+
+        // Відображаємо або приховуємо червоний кружок в залежності від кількості товарів
+        if (totalQuantity > 0) {
+            cartQuantityElement.style.display = "block";
+        } else {
+            cartQuantityElement.style.display = "none";
+        }
     }
 
 
@@ -73,5 +84,4 @@ document.addEventListener("DOMContentLoaded", function() {
             renderCart(); // Оновлення відображення кошика після зміни кількості товару
         }
     });
-
 });
