@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //ФІКСАЦІЯ ХЕДЕРА
 
-window.onscroll = function() {myFunction()};
+window.onscroll = function() { myFunction() };
 
 var header = document.getElementById("myHeader");
 
@@ -33,23 +33,38 @@ var sticky = header.offsetTop;
 function myFunction() {
     if (window.pageYOffset >= sticky) {
         header.classList.add("sticky");
+        document.body.style.paddingTop = header.offsetHeight + 'px'; // Додати додатковий відступ до верхнього краю сторінки, щоб уникнути перекриття контенту фіксованим хедером
     } else {
         header.classList.remove("sticky");
+        document.body.style.paddingTop = 0; // Зняти відступ, коли хедер не фіксований
     }
 }
+
+
 
 
 //ДОДАВАННЯ ТОВАРІВ У КОШИК
 //ІНДИКАТОР КІЛЬКОСТІ ТОВАРІВ У КОШИКУ
 
 document.addEventListener("DOMContentLoaded", function() {
-    const addToCartButtons = document.querySelectorAll(".sale-item button");
+    const addToCartButtons = document.querySelectorAll(".book-item .add-to-cart-btn, .sale-item .add-to-cart-btn");
 
     addToCartButtons.forEach(button => {
         button.addEventListener("click", function() {
-            const saleItem = this.closest(".sale-item");
-            const title = saleItem.querySelector("h2").innerText;
-            const price = saleItem.querySelector("p").innerText;
+            const parentElement = this.closest(".book-item, .sale-item");
+            if (!parentElement) {
+                return; // Перевіряємо, чи кнопка знаходиться в book-item або sale-item
+            }
+
+            const titleElement = parentElement.querySelector("h2");
+            const priceElement = parentElement.querySelector("p");
+
+            if (!titleElement || !priceElement) {
+                return; // Перевіряємо, чи знайдено всі необхідні елементи
+            }
+
+            const title = titleElement.innerText;
+            const price = priceElement.innerText;
 
             addToCart(title, price);
             updateCartQuantity(); // Оновлюємо кількість товарів у кошику
@@ -95,4 +110,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Додаємо обробник події для оновлення кількості при зміні кошика
     window.addEventListener("storage", updateCartQuantity);
 });
+
+/////////////////////////////////////////////////////////
 

@@ -16,18 +16,18 @@
         <h2>Категорії книг</h2>
         <div class="row">
             <div class="category">
-                <a href="#">Українська література</a>
+                <a href="/category/1">Українська література</a>
         </div>
         <div class="category">
-            <a href="#">Зарубіжна література</a>
+            <a href="/category/2">Зарубіжна література</a>
         </div>
         </div>
         <div class="row">
             <div class="category">
-                <a href="#">Наука</a>
+                <a href="/category/3">Наука</a>
         </div>
         <div class="category">
-            <a href="#">Програмування</a>
+            <a href="/category/4">Програмування</a>
         </div>
         </div>
     </div>
@@ -59,12 +59,12 @@
                     <h2 th:text="${sale.book.title}"></h2>
                     <img th:src="@{'/images/bookCovers/' + ${sale.book.id} + '.png'}" alt="Обкладинка книги">
                     <p th:text="'Ціна зі знижкою: ' + ${sale.book.price * (1 - sale.discount / 100)}"></p>
-                    <button>Додати в кошик</button>
+                    <button class="add-to-cart-btn">Додати в кошик</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<script th:src="@{/js/script.js}"></script>
+
 </body>
 </html>

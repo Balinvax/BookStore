@@ -38,6 +38,9 @@ public class BookService {
         return bookRepository.findAll(pageable);
     }
 
+    public List<Book> getBooksByCategoryId(Long categoryId) {
+        return bookRepository.findByCategoryId(categoryId);
+    }
 
 
 }

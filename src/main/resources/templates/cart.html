@@ -25,6 +25,17 @@
     <button id="checkout-btn">Оформити замовлення</button>
 </section>
 
+<script>
+    // Отримуємо посилання на кнопку "Оформити замовлення"
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    // Додаємо подію кліку на кнопку
+    checkoutBtn.addEventListener('click', function() {
+        // Перенаправляємо користувача на сторінку оформлення замовлення
+        window.location.href = '/order';
+    });
+</script>
+
 <script th:src="@{/js/cart.js}"></script>
 <script th:src="@{/js/script.js}"></script>
 

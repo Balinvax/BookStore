@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Оформлення замовлення</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet" th:href="@{/css/styles_header.css}"/>
+    <link href="/static/css/styles.css" rel="stylesheet" th:href="@{/css/styles_order.css}"/>
+</head>
+<body>
+<div th:insert="~{header.html}"></div>
+
+
+<div class="container">
+    <h1>Оформлення замовлення</h1>
+    <form class="orderForm" id="orderForm">
+        <label for="name">Ім'я:</label>
+        <input id="name" name="name" required type="text"><br><br>
+
+        <label for="email">Електронна адреса:</label>
+        <input id="email" name="email" required type="email"><br><br>
+
+        <label for="address">Адреса доставки:</label>
+        <textarea id="address" name="address" required></textarea><br><br>
+
+        <label for="phone">Телефон:</label>
+        <input id="phone" name="phone" required type="text"><br><br>
+
+        <button type="submit">Підтвердити замовлення</button>
+    </form>
+</div>
+
+</body>
+</html>

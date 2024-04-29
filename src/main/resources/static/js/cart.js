@@ -33,14 +33,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
             totalQuantity += item.quantity;
             // Перевіряємо, чи присутній текст у ціні
+            let priceString;
             if (item.price.includes("Ціна зі знижкою: ")) {
-                // Якщо присутній текст, видаляємо його та конвертуємо ціну у число
-                const priceString = item.price.replace("Ціна зі знижкою: ", "");
+                // Відкидаємо текст та конвертуємо ціну у число
+                priceString = item.price.slice("Ціна зі знижкою: ".length);
                 totalPrice += parseFloat(priceString) * item.quantity;
-            } else {
-                // Якщо тексту немає, просто додаємо ціну
-                totalPrice += parseFloat(item.price) * item.quantity;
+            } else if (item.price.includes("Ціна: ")) {
+                // Відкидаємо текст та конвертуємо ціну у число
+                priceString = item.price.slice("Ціна: ".length);
+                totalPrice += parseFloat(priceString) * item.quantity;
             }
+
         });
 
         totalQuantityElement.textContent = totalQuantity;
