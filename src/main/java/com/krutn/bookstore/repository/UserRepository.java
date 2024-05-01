@@ -3,9 +3,9 @@ package com.krutn.bookstore.repository;
 import com.krutn.bookstore.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+import java.util.Optional;
 
-    User findByEmail (String email);
+public interface UserRepository extends JpaRepository<User, Long> {
 
-
+    Optional<User> findByEmail(String email);
 }

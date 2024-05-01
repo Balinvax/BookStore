@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Integer id) {
+    public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
+    public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         User user = userService.getUserById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 
@@ -45,7 +45,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Integer id) {
+    public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 }

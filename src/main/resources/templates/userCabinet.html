@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Особистий кабінет</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_category.css}" />
+</head>
+<body>
+<div th:insert="~{header.html}" ></div>
+
+<div class="container">
+    <h1>Особистий кабінет</h1>
+    <div class="user-info">
+        <h2>Інформація про користувача</h2>
+        <p><strong>Ім'я:</strong> <span th:text="${user.name}"></span></p>
+        <p><strong>Електронна пошта:</strong> <span th:text="${user.email}"></span></p>
+        <!-- Додайте інші дані про користувача, які ви хочете відобразити -->
+    </div>
+<!--    <div class="user-orders">-->
+<!--        <h2>Мої замовлення</h2>-->
+<!--        <ul>-->
+<!--            &lt;!&ndash; Тут будуть відображені замовлення користувача &ndash;&gt;-->
+<!--            <li th:each="order : ${user.orders}" th:text="${order.details}"></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+</div>
+</body>
+</html>

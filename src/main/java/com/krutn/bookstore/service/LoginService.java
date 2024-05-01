@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 @Service
 public class LoginService {
 
@@ -15,11 +18,12 @@ public class LoginService {
     private PasswordEncoder passwordEncoder;
 
     public boolean authenticate(String email, String password) {
-        User user = userService.getUserByEmail(email);
-        if (user != null) {
-            String storedPassword = user.getPassword();
-            return passwordEncoder.matches(password, storedPassword);
-        }
-        return false;
+        AtomicBoolean isAuthenticated = new AtomicBoolean(false);
+        userService.getUserByEmail(email).ifPresent(user -> {
+            if (passwordEncoder.matches(password, user.getPassword())) {
+                isAuthenticated.set(true);
+            }
+        });
+        return isAuthenticated.get();
     }
 }
