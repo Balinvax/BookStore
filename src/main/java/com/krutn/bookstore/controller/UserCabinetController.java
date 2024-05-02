@@ -1,27 +1,29 @@
 package com.krutn.bookstore.controller;
 
-import com.krutn.bookstore.entity.User;
+import com.krutn.bookstore.service.CustomUserDetails;
 import com.krutn.bookstore.service.UserService;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.Optional;
 
 @Controller
 public class UserCabinetController {
 
+    @Autowired
     UserService userService;
 
-    @GetMapping("/userCabinet/{userId}")
-    public String getUserCabinet(@PathVariable Long userId, Model model) {
-        // Отримати дані про користувача з бази даних за допомогою сервісу
-        Optional<User> user = userService.getUserById(userId);
-        model.addAttribute("user", user);
-        // Передати ідентифікатор користувача до шаблону хедера
-        model.addAttribute("userId", userId);
+    @GetMapping("/user/cabinet")
+    public String userCabinet(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() instanceof CustomUserDetails) {
+            CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+            model.addAttribute("user", userService.findById(userDetails.getId()).orElseThrow());
+        } else {
+            throw new IllegalStateException("Authentication principal is not of type CustomUserDetails");
+        }
         return "userCabinet";
     }
 

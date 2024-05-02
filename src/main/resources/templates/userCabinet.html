@@ -14,10 +14,12 @@
     <h1>Особистий кабінет</h1>
     <div class="user-info">
         <h2>Інформація про користувача</h2>
+        <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
         <p><strong>Ім'я:</strong> <span th:text="${user.name}"></span></p>
         <p><strong>Електронна пошта:</strong> <span th:text="${user.email}"></span></p>
         <!-- Додайте інші дані про користувача, які ви хочете відобразити -->
     </div>
+</div>
 <!--    <div class="user-orders">-->
 <!--        <h2>Мої замовлення</h2>-->
 <!--        <ul>-->
@@ -25,6 +27,6 @@
 <!--            <li th:each="order : ${user.orders}" th:text="${order.details}"></li>-->
 <!--        </ul>-->
 <!--    </div>-->
-</div>
+
 </body>
 </html>
