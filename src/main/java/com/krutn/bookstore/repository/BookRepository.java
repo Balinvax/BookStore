@@ -14,11 +14,11 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     public List<Book> findBooksByAuthorId(Long authorId);
 
-    List<Book> findBooById(Long bookId);
-
     Book findByTitle(String title);
 
     List<Book> findBooksByTitleContainingIgnoreCase(String searchTerm);
 
-    List<Book> findBookById(Long id);
+    List<Book> findBooksById(Long id);
+
+    Book findBookById(Long id);
 }

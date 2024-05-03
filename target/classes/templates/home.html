@@ -56,8 +56,10 @@
         <div class="promotion">
             <div th:each="sale : ${sales}">
                 <div class="sale-item">
-                    <h2 th:text="${sale.book.title}"></h2>
-                    <img th:src="@{'/images/bookCovers/' + ${sale.book.id} + '.png'}" alt="Обкладинка книги">
+                    <a th:href="@{'/book/' + ${sale.book.id}}">
+                        <h2 th:text="${sale.book.title}"></h2>
+                        <img th:src="@{'/images/bookCovers/' + ${sale.book.id} + '.png'}" alt="Обкладинка книги">
+                    </a>
                     <p th:text="'Ціна зі знижкою: ' + ${sale.book.price * (1 - sale.discount / 100)}"></p>
                     <button class="add-to-cart-btn">Додати в кошик</button>
                 </div>

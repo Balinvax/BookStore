@@ -1,8 +1,10 @@
 package com.krutn.bookstore.controller;
 
 import com.krutn.bookstore.entity.Book;
+import com.krutn.bookstore.repository.BookRepository;
 import com.krutn.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,18 +15,12 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    private BookService BookService;
+    private BookService bookService;
 
-    @GetMapping("/book/{bookId}")
-    public String getBooks(@PathVariable Long bookId, Model model) {
-        // Отримати книги для даної категорії за її ідентифікатором
-        List<Book> books = BookService.getBookById(bookId);
-
-        System.out.println(books);
-        // Передати список книг у модель для відображення на сторінці
-        model.addAttribute("books", books);
-
+    @GetMapping("/book/{id}")
+    public String getBook(@PathVariable("id") Long id, Model model) {
+        Book book = bookService.getBookById(id);
+        model.addAttribute("book", book);
         return "book";
     }
-
 }

@@ -17,9 +17,10 @@
         <div class="book-list">
             <div th:each="book : ${books}">
                 <div class="book-item">
-                    <input type="hidden" th:text="${book.id}">
-                    <h2 th:text="${book.title}"></h2>
-                    <img th:src="@{'/images/bookCovers/' + ${book.id} + '.png'}" alt="Обкладинка книги">
+                    <a th:href="@{'/book/' + ${book.id}}">
+                        <h2 th:text="${book.title}"></h2>
+                        <img th:src="@{'/images/bookCovers/' + ${book.id} + '.png'}" alt="Обкладинка книги">
+                    </a>
                     <p th:text="'Ціна: ' + ${book.price}"></p>
                     <button class="add-to-cart-btn">Додати в кошик</button>
                 </div>

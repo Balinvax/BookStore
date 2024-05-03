@@ -183,3 +183,15 @@ margin-bottom: 300px;
 .promotion button:hover {
     background-color: #45a049;
 }
+
+
+.sale-item a {
+    text-decoration: none; /* Видаляємо підкреслення */
+    color: inherit; /* Застосовуємо колір, що успадковується */
+    display: block; /* Робимо посилання блочним елементом для встановлення області клікабельності */
+}
+
+.sale-item a:hover {
+    text-decoration: underline; /* Додаємо підкреслення при наведенні */
+}
+

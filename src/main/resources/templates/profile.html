@@ -5,7 +5,7 @@
     <title>Особистий кабінет</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
-    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_category.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_profile.css}" />
 </head>
 <body>
 <div th:insert="~{header.html}" ></div>
@@ -14,19 +14,63 @@
     <h1>Особистий кабінет</h1>
     <div class="user-info">
         <h2>Інформація про користувача</h2>
-        <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
         <p><strong>Ім'я:</strong> <span th:text="${user.name}"></span></p>
         <p><strong>Електронна пошта:</strong> <span th:text="${user.email}"></span></p>
-        <!-- Додайте інші дані про користувача, які ви хочете відобразити -->
     </div>
-<!--        <div class="user-orders">-->
-<!--            <h2>Мої замовлення</h2>-->
-<!--            <ul>-->
-<!--                &lt;!&ndash; Тут будуть відображені замовлення користувача &ndash;&gt;-->
-<!--                <li th:each="order : ${user.orders}" th:text="${order.details}"></li>-->
-<!--            </ul>-->
-<!--        </div>-->
+    <div class="user-orders">
+        <h2>Мої замовлення</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th>Статус</th>
+                <th>Адреса</th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order : ${orders}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${#dates.format(order.date, 'yyyy-MM-dd')}"></td>
+                <td th:text="${order.status}"></td>
+                <td th:text="${order.address}"></td>
+                <td>
+                    <button th:onclick="'cancelOrder(\'' + ${order.id} + '\')'" class="cancel-button">Відмінити замовлення</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
+
+<script>
+    function cancelOrder(orderId) {
+        if (confirm("Ви впевнені, що хочете відмінити це замовлення?")) {
+            fetch('/user/profile/' + encodeURIComponent(orderId) + '/cancel', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+               // Порожній об'єкт, оскільки вам можливо не потрібно передавати додаткові дані
+            })
+
+                    .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to cancel order');
+                    }
+                    alert('Замовлення скасовано!');
+                    // Оновлюємо сторінку після успішного скасування замовлення
+                    location.reload();
+                })
+                .catch(error => {
+                    alert('Помилка при скасуванні замовлення: ' + error.message);
+                });
+        }
+    }
+</script>
 </body>
 </html>
