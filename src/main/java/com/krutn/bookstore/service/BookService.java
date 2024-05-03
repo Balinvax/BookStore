@@ -22,8 +22,8 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Optional<Book> getBookById(int id) {
-        return bookRepository.findById(id);
+    public List<Book> getBookById(Long id) {
+        return bookRepository.findBookById(id);
     }
 
     public Book saveBook(Book book) {

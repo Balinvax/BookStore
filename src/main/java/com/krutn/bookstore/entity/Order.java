@@ -19,6 +19,15 @@ public class Order {
     @Column(name = "date")
     private Date date;
 
+    @Column
+    private String address;
+
+    @Column
+    private String delivery;
+
+    @Column
+    private String payment;
+
     @Column(name = "status")
     private String status;
 
@@ -27,7 +36,17 @@ public class Order {
 
     public Order() {
     }
-    public Order(int id, int userId, Date date, String status, double totalPrice) {}
+
+    public Order(User user, Date date, String status, String address, String delivery, String payment, double totalPrice) {
+
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.payment = payment;
+        this.delivery = delivery;
+        this.address = address;
+        this.date = date;
+        this.user = user;
+    }
 
     public Date getDate() {
         return date;
@@ -61,12 +80,32 @@ public class Order {
         this.user = user;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
     @Override
@@ -78,5 +117,9 @@ public class Order {
                 ", status='" + status + '\'' +
                 ", totalPrice=" + totalPrice +
                 '}';
+    }
+
+    public int getId() {
+        return id;
     }
 }

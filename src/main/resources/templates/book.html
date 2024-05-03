@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сторінка категорій</title>
+    <title>Сторінка книги</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
     <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_category.css}" />
@@ -13,17 +13,15 @@
 
 <section class="books">
     <div class="container">
-        <h2>Книги у вибраній категорії</h2>
         <div class="book-list">
-            <div th:each="book : ${books}">
+
                 <div class="book-item">
-                    <input type="hidden" th:text="${book.id}">
                     <h2 th:text="${book.title}"></h2>
                     <img th:src="@{'/images/bookCovers/' + ${book.id} + '.png'}" alt="Обкладинка книги">
                     <p th:text="'Ціна: ' + ${book.price}"></p>
                     <button class="add-to-cart-btn">Додати в кошик</button>
                 </div>
-            </div>
+
         </div>
     </div>
 </section>

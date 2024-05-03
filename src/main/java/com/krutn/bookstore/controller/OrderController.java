@@ -1,35 +1,32 @@
 package com.krutn.bookstore.controller;
 
 
-import com.krutn.bookstore.entity.Order;
-import com.krutn.bookstore.exeption.ResourceNotFoundException;
+import com.krutn.bookstore.dto.OrderDto;
 import com.krutn.bookstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class OrderController {
 
+    @Autowired
+    private OrderService orderService;
+
     @GetMapping("/order")
-    public String showOrderForm() {
-        return "order"; // Повертаємо назву вашого HTML-файлу для сторінки оформлення замовлення
+    public String orderForm() {
+        return "order";
     }
 
-    @PostMapping("/order")
-    @ResponseBody
-    public String processOrder(
-            @RequestParam("name") String name,
-            @RequestParam("email") String email,
-            @RequestParam("address") String address,
-            @RequestParam("phone") String phone
-    ) {
-        // Тут ви можете додати логіку для обробки інформації про замовлення
-        // Наприклад, зберігати замовлення в базі даних або відправляти електронний лист із деталями замовлення
-
-        // Повертаємо повідомлення про успішне оформлення замовлення
-        return "Ваше замовлення успішно оформлено!";
+    @PostMapping("/orders")
+    public ResponseEntity<String> createOrder(@RequestBody OrderDto orderDto) {
+        try {
+            orderService.createOrder(orderDto);
+            return ResponseEntity.ok("Замовлення успішно створено");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Помилка при створенні замовлення");
+        }
     }
 }

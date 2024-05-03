@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserCabinetController {
+public class ProfileController {
 
     @Autowired
     UserService userService;
@@ -24,7 +24,7 @@ public class UserCabinetController {
         } else {
             throw new IllegalStateException("Authentication principal is not of type CustomUserDetails");
         }
-        return "userCabinet";
+        return "profile";
     }
 
 }

@@ -3,33 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Оформлення замовлення</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="/static/css/styles.css" rel="stylesheet" th:href="@{/css/styles_header.css}"/>
     <link href="/static/css/styles.css" rel="stylesheet" th:href="@{/css/styles_order.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div th:insert="~{header.html}"></div>
 
+<h2>Кошик</h2>
+<div id="cart"></div>
+<h3>Оформлення замовлення</h3>
+<form id="orderForm" th:action="@{/orders}" th:method="post">
+    <label for="address">Адреса доставки:</label>
+    <input type="text" id="address" name="address" required><br>
 
-<div class="container">
-    <h1>Оформлення замовлення</h1>
-    <form class="orderForm" id="orderForm">
-        <label for="name">Ім'я:</label>
-        <input id="name" name="name" required type="text"><br><br>
+    <label for="delivery">Спосіб доставки:</label>
+    <select id="delivery" name="delivery">
+        <option value="courier">Кур'єр</option>
+        <option value="pickup">Самовивіз</option>
+    </select><br>
 
-        <label for="email">Електронна адреса:</label>
-        <input id="email" name="email" required type="email"><br><br>
+    <label for="payment">Спосіб оплати:</label>
+    <select id="payment" name="payment">
+        <option value="card">Картою онлайн</option>
+        <option value="cash">Готівкою при отриманні</option>
+    </select><br>
 
-        <label for="address">Адреса доставки:</label>
-        <textarea id="address" name="address" required></textarea><br><br>
+    <button type="button" onclick="submitOrder()">Підтвердити замовлення</button>
+</form>
+<script>
+    function loadCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartDiv = document.getElementById('cart');
+        cartItems.forEach(item => {
+            cartDiv.innerHTML += `<div>${item.title} - ${item.price} - Кількість: ${item.quantity}</div>`;
+        });
+    }
 
-        <label for="phone">Телефон:</label>
-        <input id="phone" name="phone" required type="text"><br><br>
+    function submitOrder() {
+        const items = JSON.parse(localStorage.getItem('cart') || '[]').map(item => ({
+            title: item.title,
+            price: parseFloat(item.price.replace(/[^\d.-]/g, '')), // Видаляємо все, крім цифр, точки та мінуса
+            quantity: item.quantity
+        }));
 
-        <button type="submit">Підтвердити замовлення</button>
-    </form>
-</div>
+        const order = {
+            address: document.getElementById('address').value,
+            delivery: document.getElementById('delivery').value,
+            payment: document.getElementById('payment').value,
+            items: items
+        };
 
+        const tokenElement = document.querySelector('meta[name="_csrf"]');
+        const headerElement = document.querySelector('meta[name="_csrf_header"]');
+        if (!tokenElement || !headerElement) {
+            alert('CSRF токен або заголовок не знайдені. Не можливо відправити форму.');
+            return;
+        }
+
+        const token = tokenElement.getAttribute('content');
+        const header = headerElement.getAttribute('content');
+
+        fetch('/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                [header]: token
+            },
+            body: JSON.stringify(order)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Сервер повернув помилку при оформленні замовлення: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(() => {
+                alert('Замовлення успішно оформлено!');
+                localStorage.removeItem('cart');
+                window.location.href = '/';
+            })
+            .catch(error => {
+                alert('Помилка при оформленні замовлення: ' + error.message);
+                console.error('Error:', error);
+            });
+    }
+
+    loadCart();
+</script>
+<script th:src="@{/js/script.js}"></script>
 </body>
 </html>

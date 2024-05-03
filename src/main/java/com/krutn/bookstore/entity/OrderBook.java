@@ -1,16 +1,16 @@
 package com.krutn.bookstore.entity;
 
-import com.krutn.bookstore.entity.Book;
-import com.krutn.bookstore.entity.Order;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "order_books")
 public class OrderBook {
 
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
 
     @ManyToOne
     @JoinColumn(name = "book_id")
@@ -19,11 +19,11 @@ public class OrderBook {
     private Integer count;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     public OrderBook() {}
-    public OrderBook(Order order, Book book, Integer count) {}
 
     public Order getOrder() {
         return order;
@@ -63,7 +63,7 @@ public class OrderBook {
                 "order=" + order +
                 ", book=" + book +
                 ", count=" + count +
-                ", id=" + id +
                 '}';
     }
+
 }
