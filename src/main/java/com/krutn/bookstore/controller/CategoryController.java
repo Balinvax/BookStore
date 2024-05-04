@@ -2,7 +2,6 @@ package com.krutn.bookstore.controller;
 
 import com.krutn.bookstore.entity.Book;
 import com.krutn.bookstore.service.BookService;
-import com.krutn.bookstore.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +25,4 @@ public class CategoryController {
 
         return "categories";
     }
-
-
 }

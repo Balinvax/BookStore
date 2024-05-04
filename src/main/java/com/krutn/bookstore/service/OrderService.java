@@ -6,7 +6,6 @@ import com.krutn.bookstore.entity.Book;
 import com.krutn.bookstore.entity.Order;
 import com.krutn.bookstore.entity.OrderBook;
 import com.krutn.bookstore.entity.User;
-import com.krutn.bookstore.exeption.OrderNotFoundException;
 import com.krutn.bookstore.repository.BookRepository;
 import com.krutn.bookstore.repository.OrderBookRepository;
 import com.krutn.bookstore.repository.OrderRepository;
@@ -15,9 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -80,6 +77,4 @@ public class OrderService {
         order.setStatus("cancel");
         orderRepository.save(order);
     }
-
-
 }

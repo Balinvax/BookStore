@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_login.css}" />
 </head>
 <body>
 <div class="container">
-    <h2>Login</h2>
+    <h2>Вхід</h2>
     <form action="#" th:action="@{/login}" method="post">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br>
-        <label for="password">Password:</label>
+        <label for="password">Пароль:</label>
         <input type="password" id="password" name="password" required><br>
-        <button type="submit">Login</button>
-        <p th:if="${param.error}" class="error">Invalid email or password.</p>
+        <button type="submit">Вхід</button>
+        <p th:if="${param.error}" class="error">Невірна пошта або пароль</p>
     </form>
-    <p>Don't have an account? <a href="/registration">Register here</a></p>
+    <p>Немає аккаунту? <a href="/registration">Реєстрація</a></p>
 </div>
 </body>
 </html>
