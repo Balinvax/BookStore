@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін панель - Головна</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_admin.css}" />
+</head>
+<body>
+<div th:insert="~{header-admin.html}" ></div>
+
+<div class="container mt-5">
+    <h1>Адмін панель</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Книги</h2>
+            <p>Управління книгами в каталозі.</p>
+            <a href="/admin/books" class="btn btn-primary">Перейти до книг</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Автори</h2>
+            <p>Управління авторами</p>
+            <a href="/admin/authors" class="btn btn-primary">Перейти до авторів</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Замовлення</h2>
+            <p>Перегляд та управління замовленнями.</p>
+            <a href="/admin/orders" class="btn btn-primary">Перейти до замовлень</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

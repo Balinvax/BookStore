@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін панель - Додати автора</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_admin.css}" />
+</head>
+<body>
+<div th:insert="~{header-admin.html}" ></div>
+<div class="container mt-5">
+    <h1>Додати автора</h1>
+    <form th:action="@{/admin/authors/add}" th:method="post" th:object="${author}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Ім'я</label>
+            <input type="text" id="name" name="name" th:value="*{name}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Додати</button>
+    </form>
+</div>
+</body>
+</html>

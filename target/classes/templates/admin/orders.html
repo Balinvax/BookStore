@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін панель - Замовлення</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_admin.css}" />
+</head>
+<body>
+<div th:insert="~{header-admin.html}" ></div>
+<div class="container mt-5">
+    <h1>Замовлення</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Дата</th>
+            <th>Користувач</th>
+            <th>Статус</th>
+            <th>Адреса</th>
+            <th>Доставка</th>
+            <th>Оплата</th>
+            <th>Загальна ціна</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}">1</td>
+            <td th:text="${order.date}">2022-01-01</td>
+            <td th:text="${order.user.name}">Ім'я користувача</td>
+            <td th:text="${order.status}">Нове</td>
+            <td th:text="${order.address}">Адреса</td>
+            <td th:text="${order.delivery}">Нова пошта</td>
+            <td th:text="${order.payment}">Картка</td>
+            <td th:text="${order.totalPrice}">1000.00</td>
+            <td>
+                <a th:href="@{/admin/orders/edit/{id}(id=${order.id})}" class="btn btn-primary">Редагувати</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

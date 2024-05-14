@@ -1,5 +1,5 @@
 <!-- Навігаційне меню -->
-<div class="header-container" id="myHeader">
+<div class="header-container" id="myHeader" xmlns:sec="http://www.w3.org/1999/xhtml">
     <nav class="header-navigation">
         <div class="header-logo">
             <a href="/"><img th:src="@{/images/logo/logo.png}" alt="Логотип Магазину книг"></a>
@@ -11,6 +11,7 @@
             <li><a href="/help">Допомога</a></li>
             <li><a href="/contacts">Контакти</a></li>
             <li><a href="/user/profile">Особистий кабінет</a></li>
+            <li sec:authorize="hasAuthority('ADMIN')"><a href="/admin/dashboard">Адмін панель</a></li>
         </ul>
 
         <!-- Поле пошуку, вихідне становище - приховане -->

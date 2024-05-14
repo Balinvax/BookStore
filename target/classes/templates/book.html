@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка книги</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_book.css}" />
+</head>
+<body>
+<div th:insert="~{header.html}"></div>
+
+<div class="container">
+    <div class="book-main">
+        <img th:src="@{'/images/bookCovers/' + ${book.id} + '.png'}" alt="Обкладинка книги">
+        <div class="book-item">
+            <h1 class="book-title" th:text="${book.title}">Назва книги</h1>
+            <h2 class="book-author" th:text="${book.author.name}">Автор</h2>
+            <p class="book-price" th:text="'Ціна: ' + ${book.price}">Ціна: 200.0</p>
+            <button class="add-to-cart-btn">Додати в кошик</button>
+        </div>
+    </div>
+    <div class="book-details">
+        <h2>Характеристики</h2>
+        <ul>
+            <li th:text="'Жанр: ' + ${book.genre}">Жанр: Художня література</li>
+            <li th:text="'ISBN: ' + ${book.isbn}">ISBN: 123-456-7890</li>
+            <li th:text="'Рік видання: ' + ${book.year}">Рік видання: 2021</li>
+            <li th:text="'Видавництво: ' + ${book.publisher}">Видавництво: Example Publisher</li>
+        </ul>
+    </div>
+</div>
+
+
+</body>
+</html>

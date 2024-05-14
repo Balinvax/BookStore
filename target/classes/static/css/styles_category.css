@@ -1,0 +1,62 @@
+.book-item {
+    width: 300px;
+    margin-bottom: 200px;
+    text-align: center;
+    height: 400px; /* Встановлюємо фіксовану висоту */
+    display: flex; /* Використовуємо flexbox для вирівнювання по вертикалі */
+    flex-direction: column; /* Розташовуємо дочірні елементи у колонку */
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.book-item img {
+    width: 300px;
+    height: 400px;
+    margin-bottom: 10px;
+}
+
+.book-item p {
+    margin-bottom: 10px;
+}
+
+.book-list button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-list button:hover {
+    background-color: #45a049;
+}
+
+.books {
+    padding: 50px;
+}
+
+.books h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+
+}
+
+.book-item a {
+    text-decoration: none; /* Видаляємо підкреслення */
+    color: inherit; /* Застосовуємо колір, що успадковується */
+    display: block; /* Робимо посилання блочним елементом для встановлення області клікабельності */
+}
+
+.book-item a:hover {
+    text-decoration: underline; /* Додаємо підкреслення при наведенні */
+}
+
+

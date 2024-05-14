@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін панель - Автори</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_admin.css}" />
+</head>
+<body>
+<div th:insert="~{header-admin.html}" ></div>
+<div class="container mt-5">
+    <h1>Автори</h1>
+    <div>
+        <a href="/admin/authors/add" class="btn btn-success mb-3">Додати автора</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ім'я</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="author : ${authors}">
+            <td th:text="${author.id}">1</td>
+            <td th:text="${author.name}">Ім'я автора</td>
+            <td>
+                <a th:href="@{/admin/authors/edit/{id}(id=${author.id})}" class="btn btn-primary">Редагувати</a>
+                <a th:href="@{/admin/authors/delete/{id}(id=${author.id})}" class="btn btn-danger">Видалити</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

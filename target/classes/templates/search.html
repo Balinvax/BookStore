@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка категорій</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_category.css}" />
+</head>
+<body>
+
+<div th:insert="~{header.html}" ></div>
+
+
+<div th:if="${not #lists.isEmpty(books)}">
+    <div class="container">
+        <h1>Результати пошуку</h1>
+        <div class="book-list">
+            <div th:each="book : ${books}">
+                <div class="book-item">
+                    <a th:href="@{'/book/' + ${book.id}}">
+                        <h2 th:text="${book.title}"></h2>
+                        <img th:src="@{'/images/bookCovers/' + ${book.id} + '.png'}" alt="Обкладинка книги">
+                    </a>
+                    <p>Ціна: <span th:text="${book.price}"></span></p>
+                    <button class="add-to-cart-btn">Додати в кошик</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" th:if="${#lists.isEmpty(books)}">
+    <h1>Книги не знайдено</h1>
+</div>
+</body>
+</html>

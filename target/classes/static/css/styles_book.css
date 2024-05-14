@@ -1,0 +1,65 @@
+.book-main {
+    display: flex;
+    align-items: center;
+}
+
+.book-item {
+    display: flex; /* Використовуємо flexbox для вирівнювання по вертикалі */
+    flex-direction: column; /* Розташовуємо дочірні елементи у колонку */
+
+    padding: 20px;
+}
+
+.book-main img {
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+}
+
+.book-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.book-price {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.add-to-cart-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #45a049;
+}
+
+.book-details {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.book-details h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.book-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.book-details li {
+    font-size: 16px;
+    margin-bottom: 5px;
+}

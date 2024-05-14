@@ -34,8 +34,8 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public void deleteBook(int id) {
-        bookRepository.deleteById(id);
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(Math.toIntExact(id));
     }
 
     public Page<Book> getBooksPage(Pageable pageable) {

@@ -77,4 +77,12 @@ public class OrderService {
         order.setStatus("cancel");
         orderRepository.save(order);
     }
+
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
+
+    public Order findById(Long orderId) {
+        return orderRepository.findById(orderId);
+    }
 }

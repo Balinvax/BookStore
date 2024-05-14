@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Адмін панель - Редагувати книгу</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_header.css}" />
+    <link rel="stylesheet" href="/static/css/styles.css" th:href="@{/css/styles_admin.css}" />
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Редагувати книгу</h1>
+    <form th:action="@{/admin/books/update}" th:method="post" th:object="${book}">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Назва</label>
+            <input type="text" id="title" name="title" th:value="*{title}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Автор</label>
+            <select id="author" name="author.id" class="form-control">
+                <option th:each="author : ${authors}" th:value="${author.id}" th:selected="${author.id == book.author.id}" th:text="${author.name}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Рік</label>
+            <input type="number" id="year" name="year" th:value="*{year}" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Ціна</label>
+            <input type="number" id="price" name="price" th:value="*{price}" class="form-control" step="0.01" required>
+        </div>
+        <div class="mb-3">
+            <label for="publisher" class="form-label">Видавництво</label>
+            <input type="text" id="publisher" name="publisher" th:value="*{publisher}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="genre" class="form-label">Жанр</label>
+            <input type="text" id="genre" name="genre" th:value="*{genre}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input type="text" id="isbn" name="isbn" th:value="*{isbn}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Категорія</label>
+            <select id="category" name="category.id" class="form-control">
+                <option th:each="category : ${categories}" th:value="${category.id}" th:selected="${category.id == book.category.id}" th:text="${category.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Оновити</button>
+    </form>
+</div>
+</body>
+</html>
